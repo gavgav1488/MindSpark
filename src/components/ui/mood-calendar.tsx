@@ -3,20 +3,20 @@
 import React, { useState } from 'react';
 
 interface MoodEntry {
-  date: string;
-  moodLevel: number;
+  id: number;
+  user_id: string;
+  mood_level: number;
   notes: string;
+  entry_date: string;
+  created_at: string;
 }
 
-export default function MoodCalendar() {
+interface MoodCalendarProps {
+  moodEntries?: MoodEntry[];
+}
+
+export default function MoodCalendar({ moodEntries = [] }: MoodCalendarProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [moodEntries, setMoodEntries] = useState<MoodEntry[]>([
-    { date: '2025-10-01', moodLevel: 4, notes: 'Хороший день' },
-    { date: '2025-10-05', moodLevel: 2, notes: 'Плохое настроение' },
-    { date: '2025-10-10', moodLevel: 5, notes: 'Отличный день!' },
-    { date: '2025-10-15', moodLevel: 3, notes: 'Нормально' },
-    { date: '2025-10-20', moodLevel: 4, notes: 'Хорошо' },
-  ]);
 
   // Получаем количество дней в месяце
   const getDaysInMonth = (year: number, month: number) => {
@@ -50,7 +50,7 @@ export default function MoodCalendar() {
   // Получаем настроение для конкретной даты
   const getMoodForDate = (date: Date) => {
     const dateString = date.toISOString().split('T')[0];
-    return moodEntries.find(entry => entry.date === dateString);
+    return moodEntries.find(entry => entry.entry_date === dateString);
   };
 
   // Рендерим календарь
@@ -75,7 +75,7 @@ export default function MoodCalendar() {
       
       let moodClass = '';
       if (moodEntry) {
-        switch (moodEntry.moodLevel) {
+        switch (moodEntry.mood_level) {
           case 1:
             moodClass = 'bg-red-500';
             break;

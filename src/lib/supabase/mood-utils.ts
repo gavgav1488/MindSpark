@@ -69,3 +69,17 @@ export async function deleteMoodEntry(id: number) {
 
   return true;
 }
+
+export async function getMoodEntryById(id: number) {
+  const { data, error } = await supabase
+    .from('mood_entries')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}

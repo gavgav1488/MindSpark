@@ -65,6 +65,15 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      <div className="mt-16 text-center">
+        <Link 
+          href="/disclaimer" 
+          className="text-sm text-gray-500 hover:text-gray-700 underline"
+        >
+          Отказ от ответственности
+        </Link>
+      </div>
     </main>
   );
 }
