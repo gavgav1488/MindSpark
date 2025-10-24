@@ -21,7 +21,7 @@ export default function DashboardPage() {
       id: 1,
       title: "Первые шаги",
       description: "Добавьте первую запись настроения",
-      icon: "📝",
+      icon: "first-steps",
       unlocked: false,
       progress: 0,
       target: 1,
@@ -30,7 +30,7 @@ export default function DashboardPage() {
       id: 2,
       title: "Исследователь",
       description: "Сделайте 5 записей настроения",
-      icon: "🔍",
+      icon: "explorer",
       unlocked: false,
       progress: 0,
       target: 5,
@@ -39,7 +39,7 @@ export default function DashboardPage() {
       id: 3,
       title: "Привычка",
       description: "Добавьте первую привычку",
-      icon: "✅",
+      icon: "habit",
       unlocked: false,
       progress: 0,
       target: 1,
@@ -48,7 +48,7 @@ export default function DashboardPage() {
       id: 4,
       title: "Начинающий",
       description: "Выполните 3 привычки",
-      icon: "⭐",
+      icon: "beginner",
       unlocked: false,
       progress: 0,
       target: 3,
@@ -57,7 +57,7 @@ export default function DashboardPage() {
       id: 5,
       title: "Последовательность",
       description: "Подряд 7 дней отслеживания настроения",
-      icon: "🔥",
+      icon: "consistency",
       unlocked: false,
       progress: 0,
       target: 7,
@@ -74,8 +74,6 @@ export default function DashboardPage() {
         if (user) {
           // Загружаем статистику
           await loadStats(user.id);
-          // Обновляем достижения
-          updateAchievements();
         }
       } catch (err) {
         console.error('Error fetching user:', err);
@@ -84,6 +82,11 @@ export default function DashboardPage() {
 
     getUser();
   }, []);
+
+  useEffect(() => {
+    // Обновляем достижения при изменении статистики
+    updateAchievements();
+  }, [stats]);
 
   const loadStats = async (userId: string) => {
     try {
@@ -197,20 +200,22 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Главная панель</h1>
+    <div className="space-y-8">
+      {/* Welcome Section */}
+      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+        <h1 className="text-2xl font-bold mb-2">Добро пожаловать в ваш дашборд!</h1>
+        <p className="opacity-90">Отслеживайте свое настроение и привычки для улучшения качества жизни</p>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        {/* Статистика */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+
+      {/* Stats Section */}
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Ваша статистика</h2>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <div className="flex items-center">
-                <div className="flex-shrink-0 bg-indigo-500 rounded-md p-3">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                  <span className="text-indigo-600 font-bold text-lg">1</span>
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
@@ -227,10 +232,8 @@ export default function DashboardPage() {
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <div className="flex items-center">
-                <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  </svg>
+                <div className="flex-shrink-0 bg-green-100 rounded-md p-3">
+                  <span className="text-green-600 font-bold text-lg">2</span>
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
@@ -247,10 +250,8 @@ export default function DashboardPage() {
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <div className="flex items-center">
-                <div className="flex-shrink-0 bg-yellow-500 rounded-md p-3">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className="flex-shrink-0 bg-yellow-100 rounded-md p-3">
+                  <span className="text-yellow-600 font-bold text-lg">3</span>
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
@@ -267,10 +268,8 @@ export default function DashboardPage() {
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <div className="flex items-center">
-                <div className="flex-shrink-0 bg-red-500 rounded-md p-3">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-                  </svg>
+                <div className="flex-shrink-0 bg-red-100 rounded-md p-3">
+                  <span className="text-red-600 font-bold text-lg">4</span>
                 </div>
                 <div className="ml-5 w-0 flex-1">
                   <dl>
@@ -284,33 +283,47 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Достижения */}
-        <div className="mb-8">
-          <Achievements achievements={achievements} />
-        </div>
+      {/* Achievements Section */}
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Ваши достижения</h2>
+        <Achievements achievements={achievements} />
+      </div>
 
-        <div className="py-4">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <div className="text-center">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Добро пожаловать в ваш дашборд!</h2>
-              <p className="text-gray-500 mb-6">Выберите раздел для отслеживания:</p>
-              <div className="flex gap-4 justify-center">
-                <Link 
-                  href="/dashboard/mood-tracker"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                >
-                  Трекер настроения
-                </Link>
-                <Link 
-                  href="/dashboard/habits"
-                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-                >
-                  Трекер привычек
-                </Link>
+      {/* Quick Actions Section */}
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Быстрые действия</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link 
+            href="/dashboard/mood-tracker"
+            className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200"
+          >
+            <div className="flex items-center">
+              <div className="flex-shrink-0 bg-indigo-100 rounded-lg p-3">
+                <span className="text-indigo-600 font-bold text-lg">A</span>
+              </div>
+              <div className="ml-4">
+                <h3 className="text-lg font-medium text-gray-900">Трекер настроения</h3>
+                <p className="text-sm text-gray-500 mt-1">Добавьте новую запись о настроении</p>
               </div>
             </div>
-          </div>
+          </Link>
+
+          <Link 
+            href="/dashboard/habits"
+            className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200"
+          >
+            <div className="flex items-center">
+              <div className="flex-shrink-0 bg-green-100 rounded-lg p-3">
+                <span className="text-green-600 font-bold text-lg">B</span>
+              </div>
+              <div className="ml-4">
+                <h3 className="text-lg font-medium text-gray-900">Трекер привычек</h3>
+                <p className="text-sm text-gray-500 mt-1">Управляйте своими привычками</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

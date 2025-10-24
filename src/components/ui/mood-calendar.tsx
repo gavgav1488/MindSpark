@@ -99,10 +99,12 @@ export default function MoodCalendar({ moodEntries = [] }: MoodCalendarProps) {
       days.push(
         <div 
           key={`day-${day}`} 
-          className="h-12 flex items-center justify-center border border-gray-200"
+          className={`h-12 flex items-center justify-center border border-gray-200 rounded-lg ${
+            moodEntry ? 'bg-white shadow-sm' : 'hover:bg-gray-50'
+          }`}
         >
           <div className="flex flex-col items-center">
-            <span className="text-sm">{day}</span>
+            <span className="text-sm font-medium">{day}</span>
             {moodEntry && (
               <div className={`w-3 h-3 rounded-full ${moodClass} mt-1`}></div>
             )}
@@ -115,24 +117,26 @@ export default function MoodCalendar({ moodEntries = [] }: MoodCalendarProps) {
   };
 
   return (
-    <div className="bg-white shadow rounded-lg p-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
         <button 
           onClick={prevMonth}
-          className="p-2 rounded-md hover:bg-gray-100"
+          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          aria-label="Предыдущий месяц"
         >
           <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-gray-900">
           {getMonthName(currentDate.getMonth())} {currentDate.getFullYear()}
-        </h2>
+        </h3>
         
         <button 
           onClick={nextMonth}
-          className="p-2 rounded-md hover:bg-gray-100"
+          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          aria-label="Следующий месяц"
         >
           <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -140,7 +144,7 @@ export default function MoodCalendar({ moodEntries = [] }: MoodCalendarProps) {
         </button>
       </div>
       
-      <div className="grid grid-cols-7 gap-1 mb-2">
+      <div className="grid grid-cols-7 gap-2">
         {['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'].map((day) => (
           <div key={day} className="text-center text-sm font-medium text-gray-500 py-2">
             {day}
@@ -148,7 +152,7 @@ export default function MoodCalendar({ moodEntries = [] }: MoodCalendarProps) {
         ))}
       </div>
       
-      <div className="grid grid-cols-7 gap-1">
+      <div className="grid grid-cols-7 gap-2">
         {renderCalendar()}
       </div>
     </div>
