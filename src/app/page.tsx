@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center justify-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
               <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -18,25 +18,25 @@ export default function Home() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-            Отслеживайте своё настроение и повышайте продуктивность
+            Повышайте продуктивность через формирование привычек и отслеживание эмоций
           </h2>
           
           <p className="text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Создайте привычки, отслеживайте эмоции и станьте лучшей версией себя с MindSpark
+            Инструмент для офисных работников, который помогает находить баланс между работой и эмоциональным благополучием
           </p>
           
           <div className="flex flex-col sm:flex-row gap-8 justify-center mb-16">
             <Link
               href="/login"
-              className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xl font-medium min-w-[220px]"
+              className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xl font-medium min-w-[220px]"
             >
               Войти
             </Link>
             <Link
               href="/register"
-              className="px-10 py-5 bg-white text-indigo-600 border-2 border-indigo-300 rounded-2xl hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xl font-medium min-w-[220px]"
+              className="px-10 py-5 bg-white text-indigo-600 border-2 border-indigo-300 rounded-xl hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xl font-medium min-w-[220px]"
             >
-              Начать бесплатно
+              Зарегистрироваться
             </Link>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function Home() {
               </div>
               <h3 className="text-3xl font-semibold text-gray-900 mb-4">Формируйте привычки</h3>
               <p className="text-xl text-gray-600">
-                Создавайте полезные привычки и отслеживайте прогресс каждый день
+                Создавайте полезные привычки и отслеживайте прогресс с помощью системы вознаграждений
               </p>
             </div>
 
@@ -68,7 +68,7 @@ export default function Home() {
               </div>
               <h3 className="text-3xl font-semibold text-gray-900 mb-4">Отслеживайте настроение</h3>
               <p className="text-xl text-gray-600">
-                Оценивайте своё эмоциональное состояние каждый день
+                Оценивайте своё эмоциональное состояние каждый день с помощью интуитивного интерфейса
               </p>
             </div>
 
@@ -107,49 +107,37 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Testimonial Section */}
-      <div className="container mx-auto px-4 py-12 mb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="text-5xl mb-6">❝</div>
-          <p className="text-3xl text-gray-700 mb-8 leading-relaxed">
-            MindSpark помог мне лучше понять свои эмоции и стать более продуктивным. Теперь я начинаю каждый день с осознанности.
-          </p>
-          <div className="text-xl font-semibold text-gray-900">Алексей Петров</div>
-          <div className="text-gray-600">Пользователь 8 месяцев</div>
-        </div>
-      </div>
-
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-16 mb-16">
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl p-16 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Готовы начать путь к лучшей версии себя?</h2>
           <p className="text-2xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Присоединяйтесь к тысячам людей, которые уже улучшили свою жизнь с помощью MindSpark
+            Присоединяйтесь к тысячам людей, которые уже улучшили свою жизнь
           </p>
           <Link
             href="/register"
             className="px-12 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-2xl font-medium inline-block"
           >
-            Начать сейчас
+            Начать бесплатно
           </Link>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="container mx-auto px-4 py-12 border-t border-gray-200">
+      <div className="container mx-auto px-4 py-12 mt-12 border-t border-gray-200">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-12 mb-8">
-            <Link href="/disclaimer" className="text-gray-500 hover:text-gray-700">
+            <Link href="/disclaimer" className="text-lg text-gray-500 hover:text-gray-700">
               Отказ от ответственности
             </Link>
-            <Link href="/privacy" className="text-gray-500 hover:text-gray-700">
+            <Link href="/privacy" className="text-lg text-gray-500 hover:text-gray-700">
               Политика конфиденциальности
             </Link>
-            <Link href="/terms" className="text-gray-500 hover:text-gray-700">
+            <Link href="/terms" className="text-lg text-gray-500 hover:text-gray-700">
               Условия использования
             </Link>
           </div>
-          <p className="text-gray-500">
+          <p className="text-lg text-gray-500">
             © {new Date().getFullYear()} MindSpark. Все права защищены.
           </p>
         </div>
